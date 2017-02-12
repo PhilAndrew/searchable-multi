@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <title>Basic test</title>
+  <link rel="import" href="../node_modules/mocha-test/mocha-test.html">
+  <script src="../node_modules/matthewp/shadydom/shadydom.min.js"></script>
+  <script src="../node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+  <script src="../node_modules/@webcomponents/html-imports/html-imports.min.js"></script>
+  <link rel="import" href="../multi.html">
+  <script src="./helpers.js"></script>
+</head>
+<body>
+  <searchable-multi placeholder="Search fruits...">
+    <select multiple="multiple">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option selected>Blueberry</option>
+      <option>Cherry</option>
+    </select>
+  </searchable-multi>
+
+  <mocha-test mocha-path="../node_modules/mocha" chai-path="../node_modules/chai">
+    <template>
+      <script>
+        describe('Initial', function(){
+          var helpers = new TestHelpers(document.querySelector('searchable-multi'));
+
+          after(function(){
+            helpers.off();
+          });
+
+          it('Contains initial values', function(){
+            assert.deepEqual(helpers.multi.value, ["Blueberry"]);
+          });
+
+          it('Has the correct placeholder', function(){
+            var input = helpers.shadow.querySelector('input');
+            assert.equal(input.placeholder, 'Search fruits...');
+          });
+
+          it('Has one item in the selected list', function(){
+            var selected = helpers.shadow.querySelector('.selected-wrapper');
+            assert.equal(selected.children.length, 1);
+          });
+        });
+
+        describe('Adding an item', function(){
+          var helpers;
+
+          before(function(){
+            helpers = new TestHelpers(document.querySelector('searchable-multi'));
+            helpers.click('non-selected', 1);
+          });
+
+          after(function(){
+            helpers.off();
+            helpers.click('selected', 1);
+          });
+
+          it('Adds the item to the selected list', function(){
+            var selected = helpers.shadow.querySelector('.selected-wrapper');
+            assert.equal(selected.children.length, 2);
+            assert.equal(selected.children[1].textContent, 'Banana');
+          });
+
+          it('Updates the `value` prop', function(){
+            assert.deepEqual(helpers.multi.value, ['Blueberry', 'Banana']);
+          });
+
+          it('Fires a change event', function(){
+            var changes = helpers.events.get('change');
+            assert.equal(changes.length, 1);
+          });
+        });
+
+        describe('Removing an item', function(){
+          var helpers;
+
+          before(function(){
+            helpers = new TestHelpers(document.querySelector('searchable-multi'));
+            helpers.click('selected', 0);
+          });
+
+          after(function(){
+            helpers.off();
+            helpers.click('non-selected', 2);
+          });
+
+          it('Removes the item from the selected list', function(){
+            var selected = helpers.shadow.querySelector('.selected-wrapper');
+            assert.equal(selected.children.length, 0);
+          });
+
+          it('Updates the `value` prop', function(){
+            assert.equal(helpers.multi.value.length, 0);
+            assert.deepEqual(helpers.multi.value, []);
+          });
+
+          it('Fires a change event', function(){
+            var changes = helpers.events.get('change');
+            assert.equal(changes.length, 1);
+          });
+        });
+      </script>
+    </template>
+  </mocha-test>
+</body>
+</html>

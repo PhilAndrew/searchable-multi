@@ -18,13 +18,15 @@ class SearchableMulti extends HTMLElement {
       this._refresh();
     }
 
-    this.shadowRoot.addEventListener('click', this);
-    this.shadowRoot.addEventListener('keyup', this);
+    this._nonSelected.addEventListener('click', this);
+    this._selected.addEventListener('click', this);
+    this._search.addEventListener('keyup', this);
   }
 
   disconnectedCallback() {
-    this.shadowRoot.removeEventListener('click', this);
-    this.shadowRoot.removeEventListener('keyup', this);
+    this._nonSelected.removeEventListener('click', this);
+    this._selected.removeEventListener('click', this);
+    this._search.removeEventListener('keyup', this);
   }
 
   attributeChangedCallback(name, oldVal, newVal) {
