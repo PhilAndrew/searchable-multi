@@ -1,5 +1,20 @@
 {
   "name": "searchable-multi",
-  "version": "0.0.1",
-  "main": "multi.js"
+  "version": "0.1.0",
+  "main": "multi.js",
+  "description": "A more user friendly version of multi select",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewp/searchable-multi.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewp/searchable-multi/issues"
+  },
+  "homepage": "https://github.com/matthewp/searchable-multi#readme",
+  "files": [
+    "multi.js",
+    "multi.html"
+  ]
+
 }

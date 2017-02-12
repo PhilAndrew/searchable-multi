@@ -1,8 +1,13 @@
 
 class SearchableMulti extends HTMLElement {
+  static get observedAttributes() {
+    return ['placeholder'];
+  }
+
   constructor() {
     super();
     this._values = [];
+    this._placeholder = 'Search...';
   }
 
   connectedCallback() {
@@ -22,8 +27,25 @@ class SearchableMulti extends HTMLElement {
     this.shadowRoot.removeEventListener('keyup', this);
   }
 
+  attributeChangedCallback(name, oldVal, newVal) {
+    if(name === 'placeholder') {
+      this.placeholder = newVal;
+    }
+  }
+
   get value() {
     return this._values;
+  }
+
+  get placeholder() {
+    return this._placeholder;
+  }
+
+  set placeholder(val) {
+    this._placeholder = val;
+    if(this._rendered) {
+      this.shadowRoot.querySelector('input').placeholder = val;
+    }
   }
 
   handleEvent(ev) {
@@ -112,6 +134,7 @@ class SearchableMulti extends HTMLElement {
     var input = this._search = doc.createElement('input');
     input.type = 'text';
     input.className = 'search-input';
+    input.placeholder = this.placeholder;
 
     var nonSelected = this._nonSelected = doc.createElement('div');
     nonSelected.className = 'non-selected-wrapper';
