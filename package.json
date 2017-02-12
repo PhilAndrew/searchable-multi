@@ -1,6 +1,6 @@
 {
   "name": "searchable-multi",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "multi.js",
   "description": "A more user friendly version of multi select",
   "scripts": {
