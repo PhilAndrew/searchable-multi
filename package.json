@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "main": "multi.js",
   "description": "A more user friendly version of multi select",
+  "scripts": {
+    "test": "testee --browsers firefox test/basics.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/matthewp/searchable-multi.git"
@@ -15,6 +18,12 @@
   "files": [
     "multi.js",
     "multi.html"
-  ]
-
+  ],
+  "devDependencies": {
+    "@webcomponents/custom-elements": "webcomponents/custom-elements",
+    "@webcomponents/html-imports": "webcomponents/html-imports",
+    "matthewp/shadydom": "matthewp/shadydom#base",
+    "mocha-test": "^2.0.3",
+    "testee": "^0.3.1"
+  }
 }
