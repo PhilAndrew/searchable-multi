@@ -1,0 +1,21 @@
+{
+  "name": "searchable-multi",
+  "homepage": "https://github.com/matthewp/searchable-multi",
+  "authors": [
+    "Matthew Phillips <matthew@matthewphillips.info>"
+  ],
+  "description": "A more user friendly version of multi select",
+  "main": "multi.js",
+  "keywords": [
+    "web-components",
+    "select"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
