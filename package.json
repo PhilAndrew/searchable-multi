@@ -22,7 +22,7 @@
   "devDependencies": {
     "@webcomponents/custom-elements": "webcomponents/custom-elements",
     "@webcomponents/html-imports": "webcomponents/html-imports",
-    "matthewp/shadydom": "matthewp/shadydom#base",
+    "cloudydom": "^1.0.0",
     "mocha-test": "^2.0.3",
     "testee": "^0.3.1"
   }
