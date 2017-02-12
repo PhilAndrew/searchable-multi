@@ -64,6 +64,28 @@ Set the `placeholder` attribute or property to set the placeholder text used in 
 </searchable-multi>
 ```
 
+### value
+
+The `value` property is an array of all of the selected values:
+
+```js
+let multi = document.querySeletor('searchable-multi');
+
+console.log(multi.value); // ["Orange", "Kiwi", "Lemon"]
+```
+
+### change
+
+The `change` **event** fires any time the `value` changes, such as when an item is selected or unselected.
+
+```js
+let multi = document.querySeletor('searchable-multi');
+
+multi.addEventListener('change', e => {
+  console.log(multi.value); // ["Cherry"]
+});
+```
+
 ## License
 
 MIT, see the LICENSE file.
