@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <title>Basic test</title>
+  <link rel="import" href="../node_modules/mocha-test/mocha-test.html">
+  <script src="../node_modules/cloudydom/cloudydom.min.js"></script>
+  <script src="../node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+  <script src="../node_modules/@webcomponents/html-imports/html-imports.min.js"></script>
+  <link rel="import" href="../multi.html">
+  <script src="./helpers.js"></script>
+</head>
+<body>
+  <searchable-multi placeholder="Search fruits...">
+    <select multiple="multiple">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+    </select>
+  </searchable-multi>
+
+  <mocha-test mocha-path="../node_modules/mocha" chai-path="../node_modules/chai">
+    <template>
+      <script>
+        describe('Searching by label', function(){
+          var helpers;
+
+          before(function(){
+            helpers = new TestHelpers(document.querySelector('searchable-multi'));
+            helpers.search('n');
+          });
+
+          after(function(){
+            //helpers.search('');
+            helpers.off();
+          });
+
+          it('Has visible item', function(){
+            var nonSelected = helpers.shadow.querySelector('.non-selected-wrapper');
+            var count = helpers.visibleChildren(nonSelected);
+            assert.equal(count, 1);
+          });
+        });
+      </script>
+    </template>
+  </mocha-test>
+</body>
+</html>

@@ -109,11 +109,16 @@ class SearchableMulti extends HTMLElement {
   _onSearch() {
     var term = this._search.value.toLowerCase();
 
+    function includes(str) {
+      return str.toLowerCase().indexOf(term) !== -1;
+    }
+
     var nonSelected, d;
     for(var i = 0, len = this._nonSelected.children.length; i < len; i++) {
       nonSelected = this._nonSelected.children[i];
 
-      if(term && nonSelected.dataset.value.toLowerCase().indexOf(term) === -1) {
+      if(term && !includes(nonSelected.dataset.value) &&
+        !includes(nonSelected.textContent)) {
         d = 'none';
       } else {
         d = '';
