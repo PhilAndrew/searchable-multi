@@ -97,8 +97,14 @@ class SearchableMulti extends HTMLElement {
 
   _selectedClick(el) {
     var nonSelected = el._nonSelected;
+    var option = nonSelected._option;
     nonSelected._selected = undefined;
     el.parentNode.removeChild(el);
+
+    // Deselect the option
+    option.selected = false;
+
+    // Remove from values
     var idx = this._values.indexOf(el.dataset.value);
     if(idx !== -1) {
       this._values.splice(idx, 1);

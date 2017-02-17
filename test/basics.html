@@ -91,6 +91,11 @@
             assert.equal(selected.children.length, 0);
           });
 
+          it('Unselects it from the source select', function(){
+            let option = helpers.multi.querySelectorAll('option')[2];
+            assert.equal(option.selected, false);
+          });
+
           it('Updates the `value` prop', function(){
             assert.equal(helpers.multi.value.length, 0);
             assert.deepEqual(helpers.multi.value, []);
