@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@webcomponents/custom-elements@webcomponents/custom-elements":
+"@webcomponents/custom-elements@^1.0.0-alpha.3":
   version "1.0.0-alpha.3"
-  resolved "https://codeload.github.com/webcomponents/custom-elements/tar.gz/8b1c47ff790d51678f75c7016b61ad9655156cc0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.0.0-alpha.3.tgz#340d8cc8307730540ac92276c9a49149f6fc0116"
 
 "@webcomponents/html-imports@webcomponents/html-imports":
   version "0.0.1"
@@ -304,9 +304,9 @@ cliui@^3.0.3:
     strip-ansi "^3.0.1"
     wrap-ansi "^2.0.0"
 
-cloudydom@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cloudydom/-/cloudydom-1.0.0.tgz#f4d9465aa15e7aac72f158bbe9798c642e889c0f"
+cloudydom@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cloudydom/-/cloudydom-1.0.1.tgz#f5039c0906b9f2e118a924668a1cd2fb273fe771"
 
 code-point-at@^1.0.0:
   version "1.1.0"
