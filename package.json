@@ -20,9 +20,9 @@
     "multi.html"
   ],
   "devDependencies": {
-    "@webcomponents/custom-elements": "webcomponents/custom-elements",
+    "@webcomponents/custom-elements": "^1.0.0-alpha.3",
     "@webcomponents/html-imports": "webcomponents/html-imports",
-    "cloudydom": "^1.0.0",
+    "cloudydom": "^1.0.1",
     "mocha-test": "^2.0.3",
     "testee": "^0.3.1"
   }
