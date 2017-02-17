@@ -4,7 +4,7 @@
   "main": "multi.js",
   "description": "A more user friendly version of multi select",
   "scripts": {
-    "test": "testee --browsers firefox test/basics.html"
+    "test": "testee --browsers firefox test/basics.html test/label.html"
   },
   "repository": {
     "type": "git",
